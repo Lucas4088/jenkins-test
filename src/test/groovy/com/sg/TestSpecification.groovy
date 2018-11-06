@@ -23,7 +23,7 @@ class TestSpecification extends Specification {
 
         where:
         number | parityCheck
-        4      | Parity.ODD
+        4      | Parity.EVEN
         1      | Parity.ODD
         2      | Parity.EVEN
         3      | Parity.ODD
@@ -47,7 +47,7 @@ class TestSpecification extends Specification {
 
         where:
         a    | b   | result
-        0    | 1   | 1
+        0    | 1   | 0
         1    | 2   | 2
         -3   | -5  | 15
         -2   | 1   | -2
