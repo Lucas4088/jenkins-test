@@ -25,7 +25,7 @@ pipeline {
 
             input {
                 message "Do you want to deploy app?"
-                ok "Getting ready!"
+                ok "HELL YEAH!"
             }
             steps {
                  unstash 'app'
