@@ -23,11 +23,8 @@ pipeline {
                 HEROKU_API_KEY = credentials('HEROKU_API_KEY')
             }
             steps {
-
-                     sh 'echo $HEROKU_API_KEY'
-                     unstash 'app'
-                     sh './gradlew deployHeroku --stacktrace'
-
+                 unstash 'app'
+                 sh './gradlew deployHeroku --stacktrace'
             }
        }
     }
