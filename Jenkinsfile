@@ -23,8 +23,9 @@ pipeline {
                 withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'HEROKU_CREDENTIALS', \
                                                                          keyFileVariable: 'HEROKU_API_KEY')]) {
 
+                     sh 'echo $HEROKU_API_KEY'
                      unstash 'app'
-                     sh './gradlew deployHeroku'
+                     sh './gradlew deployHeroku --stacktrace'
                 }
 
             }
