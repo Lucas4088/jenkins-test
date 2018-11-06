@@ -18,9 +18,11 @@ pipeline {
        }
 
        stage('Deploy'){
-
+            environment {
+                HEROKU_EMAIL = 'lukasz4088@gmail.com'
+            }
             steps {
-                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'HEROKU_CREDENTIALS', \
+                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'HEROKU_API_KEY', \
                                                                          keyFileVariable: 'HEROKU_API_KEY')]) {
 
                      sh 'echo $HEROKU_API_KEY'
