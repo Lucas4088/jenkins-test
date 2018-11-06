@@ -1,9 +1,7 @@
 
 pipeline {
     agent any
-    environment {
-                HEROKU_API_KEY = credentials('HEROKU_CREDENTIALS')
-    }
+
     stages {
 
        stage('Build'){
@@ -22,8 +20,12 @@ pipeline {
        stage('Deploy'){
 
             steps {
-                unstash 'app'
-                sh './gradlew deployHeroku'
+                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'HEROKU_CREDENTIALS', \
+                                                                         keyFileVariable: 'HEROKU_API_KEY')]) {
+                     unstash 'app'
+                     sh './gradlew deployHeroku'
+                }
+
             }
        }
     }
