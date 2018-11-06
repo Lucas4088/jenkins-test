@@ -20,15 +20,13 @@ pipeline {
        stage('Deploy'){
             environment {
                 HEROKU_EMAIL = 'lukasz4088@gmail.com'
+                HEROKU_API_KEY = credentials('HEROKU_API_KEY')
             }
             steps {
-                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'HEROKU_API_KEY', \
-                                                                         keyFileVariable: 'HEROKU_API_KEY')]) {
 
                      sh 'echo $HEROKU_API_KEY'
                      unstash 'app'
                      sh './gradlew deployHeroku --stacktrace'
-                }
 
             }
        }
