@@ -19,7 +19,7 @@ pipeline {
 
        stage('Deploy'){
             environment{
-                HEROKU_CREDENTIALS = credentials(HEROKU_CREDENTIALS)
+                HEROKU_CREDENTIALS = credentials('HEROKU_CREDENTIALS')
             }
             steps{
                 unstash 'app'
