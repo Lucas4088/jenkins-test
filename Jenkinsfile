@@ -7,6 +7,7 @@ pipeline {
        stage('Build'){
             steps{
                 sh './gradlew clean assemble'
+                stash includes: '**/build/libs/*.war', name 'app'
             }
        }
 
@@ -17,17 +18,12 @@ pipeline {
        }
 
        stage('Deploy'){
+            environment{
+                HEROKU_CREDENTIALS = credentials(HEROKU_CREDENTIALS)
+            }
             steps{
-                sh '''echo "Checking if remote exists..."
-                if ! git ls-remote heroku; then
-                  echo "Adding heroku remote..."
-                  git remote add heroku git@heroku.com:jenkins-start.git
-                fi
-
-                # push only origin/master to heroku/master - will do nothing if
-                # master doesn't change.
-                echo "Updating heroku master branch..."
-                git push heroku origin/master:master'''
+                unstash 'app'
+                sh './gradlew deployHeroku'
             }
        }
     }
