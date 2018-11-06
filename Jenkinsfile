@@ -22,7 +22,7 @@ pipeline {
             steps {
                 withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'HEROKU_CREDENTIALS', \
                                                                          keyFileVariable: 'HEROKU_API_KEY')]) {
-                     git remote add heroku git@jenkins-start.com:.git
+                     sh 'git remote add heroku git@jenkins-start.com:.git'
                      unstash 'app'
                      sh './gradlew deployHeroku'
                 }
