@@ -22,6 +22,11 @@ pipeline {
                 HEROKU_EMAIL = 'lukasz4088@gmail.com'
                 HEROKU_API_KEY = credentials('HEROKU_API_KEY')
             }
+
+            input {
+                message "Do you want to deploy app?"
+                ok "Getting ready!"
+            }
             steps {
                  unstash 'app'
                  sh './gradlew deployHeroku --stacktrace'
