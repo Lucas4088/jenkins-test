@@ -18,10 +18,10 @@ pipeline {
        }
 
        stage('Deploy'){
-            environment{
+            environment {
                 HEROKU_CREDENTIALS = credentials('HEROKU_CREDENTIALS')
             }
-            steps{
+            steps {
                 unstash 'app'
                 sh './gradlew deployHeroku'
             }
