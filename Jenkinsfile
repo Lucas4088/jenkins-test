@@ -7,7 +7,7 @@ pipeline {
        stage('Build'){
             steps{
                 sh './gradlew clean assemble'
-                stash includes: '**/build/libs/*.war', name 'app'
+                stash includes: '**/build/libs/*.war', name: 'app'
             }
        }
 
