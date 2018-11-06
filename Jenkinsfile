@@ -11,14 +11,14 @@ pipeline {
        }
 
        stage('Test'){
-            steps{
-                echo 'Testing ...'
+            steps {
+                sh './gradlew test'
             }
        }
 
        stage('Deploy'){
             steps{
-                echo 'Deploying ...'
+                sh 'git push heroku master'
             }
        }
     }
