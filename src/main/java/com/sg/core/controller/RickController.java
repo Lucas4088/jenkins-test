@@ -17,7 +17,7 @@ public class RickController {
 
     @GetMapping
     public ResponseEntity<byte[]> getRick() throws IOException {
-        File gif = new File("src/main/resources/media/rick.gif");
+        File gif = new File("resources/media/rick.gif");
 
         return ResponseEntity.ok().contentType(MediaType.IMAGE_GIF)
                 .body(Files.readAllBytes(gif.toPath()));
