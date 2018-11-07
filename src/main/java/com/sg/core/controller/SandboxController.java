@@ -1,10 +1,13 @@
 package com.sg.core.controller;
 
 import com.sg.core.Sandbox;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController(value = "/sanbox")
+@Controller
+@RequestMapping(value = "/sandbox")
 public class SandboxController {
 
     private final Sandbox sandbox;
