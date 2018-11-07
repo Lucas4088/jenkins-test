@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -19,6 +18,7 @@ pipeline {
 
        stage('Deploy'){
             environment {
+                PORT = 8081
                 HEROKU_EMAIL = 'lukasz4088@gmail.com'
                 HEROKU_API_KEY = credentials('HEROKU_API_KEY')
             }

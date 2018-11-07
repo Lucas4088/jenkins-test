@@ -1,3 +1,6 @@
 spring:
   application:
     name: Jenkins-test
+
+server:
+  port: ${PORT:8080}
