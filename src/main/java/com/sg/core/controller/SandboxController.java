@@ -1,6 +1,7 @@
 package com.sg.core.controller;
 
 import com.sg.core.Sandbox;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +18,8 @@ public class SandboxController {
     }
 
     @GetMapping
-    public String sayHi() {
+    public ResponseEntity<String> sayHi() {
         System.out.println(sandbox.evaluateParity(100));
-        return "Hi user";
+        return ResponseEntity.ok().body("Hi user");
     }
 }
