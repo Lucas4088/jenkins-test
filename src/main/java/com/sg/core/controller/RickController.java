@@ -23,11 +23,8 @@ public class RickController {
     }
 
     @GetMapping
-    public ResponseEntity<byte[]> getRick() throws IOException {
+    public String getRick() throws IOException {
 
-        File gif = new File(servletContext.getRealPath("media/rick.gif"));
-
-        return ResponseEntity.ok().contentType(MediaType.IMAGE_GIF)
-                .body(Files.readAllBytes(gif.toPath()));
+        return "RICK!!!!!!!!!!";
     }
 }
