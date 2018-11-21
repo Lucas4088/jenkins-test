@@ -1,6 +1,7 @@
 package com.sg;
 
 import com.sg.core.Npc;
+import com.sg.core.repository.NpcRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -66,5 +67,6 @@ public class Application {
 
         System.out.println("HashTable:");
         hashTable.forEach((key, value) -> System.out.println(key +", "+value));
+
     }
 }

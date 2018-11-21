@@ -1,10 +1,19 @@
 package com.sg.core;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Objects;
 
 public class Npc {
+
+    @Id
+    private String id;
+
     private String name;
     private Location location;
+
+    public Npc() {
+    }
 
     public Npc(String name, Location location) {
         this.name = name;
@@ -34,24 +43,25 @@ public class Npc {
 
     @Override
     public boolean equals(Object o) {
-        return name.equals(((Npc) o).name);
-        /*if (this == o) return true;
+        if (this == o) return true;
         if (!(o instanceof Npc)) return false;
         Npc npc = (Npc) o;
-        return Objects.equals(name, npc.name) &&
-                Objects.equals(location, npc.location);*/
+        return id == npc.id &&
+                Objects.equals(name, npc.name) &&
+                Objects.equals(location, npc.location);
     }
 
-    /*@Override
+    @Override
     public int hashCode() {
-        return  Objects.hash(name, location);
-    }*/
+        return Objects.hash(id, name, location);
+    }
 
-    /*@Override
+    @Override
     public String toString() {
         return "Npc{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", location=" + location +
                 '}';
-    }*/
+    }
 }

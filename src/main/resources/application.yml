@@ -1,6 +1,9 @@
 spring:
   application:
     name: Jenkins-test
+  data:
+    mongodb:
+      database: docker
 
 server:
   port: ${PORT:8080}
